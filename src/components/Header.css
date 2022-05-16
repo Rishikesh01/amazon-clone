@@ -54,9 +54,9 @@
   color: white;
 }
 
-.header_optionCount{
-	margin-left: 10px;
-	margin-right: 10px;
+.header_optionCount {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .header_optionBasket {
   display: flex;
