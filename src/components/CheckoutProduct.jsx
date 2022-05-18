@@ -30,7 +30,7 @@ export const CheckoutProduct = ({
           <small>$</small>
           <strong>{price}</strong>
         </p>
-        <div className="checkoutProduct__rating">
+        <div className="checkoutProduct_rating">
           {Array(rating)
             .fill()
             .map((_, i) => (

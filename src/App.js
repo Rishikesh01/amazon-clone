@@ -5,8 +5,17 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Checkout } from "./components/Checkout";
 
 function App() {
-  return (
-      <Header />
+  
+    return (
+      <Router>
+      <Header/>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/checkout" element={<Checkout/>}/>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
