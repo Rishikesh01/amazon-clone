@@ -6,6 +6,7 @@ export const Login = () => {
 
   const errRef = useRef()
   const [err, setErr] = useState("")
+  const [isErr, setIsErr] = useState(false)
   const [success, setSuccess] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -25,22 +26,20 @@ export const Login = () => {
       )
     } catch (err) {
       if (err.response.status === 400) {
-        setSuccess(false)
-        setErr("bad request")
+        setErr("Fill input")
       } else if (err.response.status === 403) {
-        setSuccess(false)
         setErr("Unauthorized")
       }
       else if (err.response.status === 401) {
-        setSuccess(false)
-        setErr("username or password is incorrect")
-      } else if(err.response.status===500 || err.response.status >500){
-        setSuccess(false)
+        setErr("Username/Password is incorrect")
+      } else if (err.response.status === 500 || err.response.status > 500) {
         setErr("Server failed to respond")
       }
+      setSuccess(false)
+      setIsErr(true)
       errRef.current.focus()
     }
-  
+
   }
 
   const register = (e) => {
@@ -50,7 +49,7 @@ export const Login = () => {
 
   return (
     <>{success ?
-      (<Navigate replace to="/"/>) :
+      (<Navigate replace to="/" />) :
       (
         <div className="login">
           <img
@@ -59,11 +58,16 @@ export const Login = () => {
             alt=""
           />
           <div className="login_container">
-            <p ref={errRef} aria-live="assertive">{err}</p>
             <h1>Hello Sign-in</h1>
+
+            <>
+              {isErr ?
+                <p ref={errRef} className="login_error" aria-live="assertive">{err}</p> : <div></div>
+              }
+            </>
+
             <form>
               <h5>Email</h5>
-
               <input type="text" placeholder="email" onChange={(e) => setEmail(e.target.value)} />
               <h5>password</h5>
               <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
