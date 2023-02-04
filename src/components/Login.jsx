@@ -1,7 +1,7 @@
 import "./Login.css";
 import axios from "axios";
 import { useRef, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 export const Login = () => {
 
   const errRef = useRef()
@@ -42,11 +42,6 @@ export const Login = () => {
 
   }
 
-  const register = (e) => {
-    e.preventDefault();
-
-  }
-
   return (
     <>{success ?
       (<Navigate replace to="/" />) :
@@ -69,15 +64,16 @@ export const Login = () => {
             <form>
               <h5>Email</h5>
               <input type="text" placeholder="email" onChange={(e) => setEmail(e.target.value)} />
-              <h5>password</h5>
+              <h5>Password</h5>
               <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
-              <button className="login_signInButton" onClick={signIn}>Sign in</button></form>
+              <button className="login_signInButton" onClick={signIn}>Sign in</button>
+              </form>
           </div>
           <p>By signing-in you accept our T&C</p>
-          <button className="login_registration" onClick={register}>Create new Amazon account</button>
+          <Link className="login_registration" to ="/signup">Create new Amazon account</Link>
         </div>
       )
     }
     </>
   );
-};
+};  

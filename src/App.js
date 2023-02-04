@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Checkout } from "./components/Checkout";
 import { Login } from "./components/Login";
 import { Fragment } from "react";
+import { Register } from "./components/register";
+import { SellerRegister } from "./components/register-seller";
 function App() {
   return (
     <Router>
@@ -34,6 +36,22 @@ function App() {
                 <Header />
                 <Checkout />
               </Fragment>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <>
+                <Register />
+              </>
+            }
+          />
+             <Route
+            path="/seller/signup"
+            element={
+              <>
+                <SellerRegister/>
+              </>
             }
           />
         </Routes>
