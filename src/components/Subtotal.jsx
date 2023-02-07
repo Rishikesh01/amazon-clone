@@ -19,7 +19,6 @@ export const Subtotal = () => {
           </>
         )}
         decimalScale={2}
-        value={getBasketTotal(basket)} // Part of the homework
         displayType={"text"}
         thousandSeparator={true}
         prefix={"$"}
